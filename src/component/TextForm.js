@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function TextForm() {
+export default function TextForm(props) {
   const handleUpClicked = () => {
     setText(text.toUpperCase());
   };
@@ -17,14 +17,11 @@ export default function TextForm() {
   return (
     <>
       <div className="mb-3 container">
-        <h1 className="h-primary">Enter a Text to Analyse: </h1>
-        <br />
-        <textarea
-          className="container"
-          onChange={handleOnChange}
-          rows="8"
-          value={text}
-        ></textarea>
+        <h1 className="h-primary" style={{marginTop: '15px'}} >Enter a Text to Analyse: </h1>
+       
+       
+        <textarea  className="container"  style = {{border: '2px solid black',color: props.mode==='dark'?'white':'black',cursor: 'default' , backgroundColor: props.mode==='dark'?'grey':'white'}}   onChange={handleOnChange}  rows="8"  value={text}>
+        </textarea>
         <button className="btn btn-primary" onClick={handleUpClicked}>
           {"Convert into UpperCase"}
         </button>
@@ -32,13 +29,13 @@ export default function TextForm() {
           {"Convert into LowerCase"}
         </button>
         <button className="btn btn-primary" onClick={handleClearClicked}>
-          {"Clear"}
+          Clear
         </button>
       </div>
       <div className="container">
         <h1>Summary:</h1>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {text.split(" ").length===1?(text.length===0?0:text.split(" ").length):text.split(" ").length} words and {text.length} characters
         </p>
         <p>{0.008*text.split(" ").length} Minutes read</p>
         <h2>Preview</h2>
