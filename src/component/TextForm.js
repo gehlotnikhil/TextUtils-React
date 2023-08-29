@@ -3,15 +3,18 @@ import React, { useState } from "react";
 export default function TextForm(props) {
   const handleUpClicked = () => {
     setText(text.toUpperCase());
+    props.showAlert("Text Uppercase Successfully","success");
   };
   const handleLoClicked = () => {
     setText(text.toLowerCase());
+    props.showAlert("Text Lowercase Successfully","success");
   };
   function handleOnChange(event) {
     setText(event.target.value);
   }
   function handleClearClicked(event) {
     setText("");
+    props.showAlert("Clear Text Successfully","success");
   }
   const [text, setText] = useState("");
   return (

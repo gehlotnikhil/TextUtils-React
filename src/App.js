@@ -18,6 +18,10 @@ function App() {
         type: type
       }
     );
+   
+    setInterval(() => {
+      setAlert(null);
+    }, 2000);
   }
   const clickToggle = () => {
     if (mode === "light") {
@@ -25,7 +29,8 @@ function App() {
       document.body.style.backgroundColor = "grey";
       document.body.style.color = "white";
       showAlert("Light Mode has been Enabled","success");
-    } else {
+    } 
+    else {
       setmode("light");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
@@ -37,9 +42,9 @@ function App() {
       <Navbar title="TextUtils" mode={mode} toggle={clickToggle} />
       <Alert alert = {alert}/>
       {/* <About /> */}
-      <TextForm mode={mode}  />
+      <TextForm mode={mode}  showAlert = {showAlert} />
       
-    </>
+    </> 
   );
 }
 
