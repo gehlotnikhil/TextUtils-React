@@ -19,9 +19,13 @@ function App() {
       }
     );
    
-    setInterval(() => {
-      setAlert(null);
-    }, 2000);
+      setTimeout(() => {
+        setAlert(null);
+      }, 3000);
+
+    // setInterval(() => {
+    //   setAlert(null);
+    // }, 2000);
   }
   const clickToggle = () => {
     if (mode === "light") {
