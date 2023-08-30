@@ -10,7 +10,10 @@ export default function TextForm(props) {
     props.showAlert("Text Lowercase Successfully","success");
   };
   function handleOnChange(event) {
-    setText(event.target.value);
+    let v= event.target.value;
+    v = v.replaceAll("  "," ");
+    setText(v);
+
   }
   function handleClearClicked(event) {
     setText("");
@@ -38,7 +41,7 @@ export default function TextForm(props) {
       <div className="container">
         <h1>Summary:</h1>
         <p>
-          {text.split(" ").length===1?(text.length===0?0:text.split(" ").length):text.split(" ").length} words and {text.length} characters
+          {text.split(" ").length===1?(text.length===0?0:text.split(" ").length):text.trim().split(" ").length} words and {text.trim().length} characters
         </p>
         <p>{0.008*text.split(" ").length} Minutes read</p>
         <h2>Preview</h2>

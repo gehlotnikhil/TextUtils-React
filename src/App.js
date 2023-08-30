@@ -38,12 +38,26 @@ function App() {
       setmode("light");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
-      showAlert("Dark Mode has been Enabled","success");
+      showAlert("Dark Mode has been Disabled","success");
+    }
+  };
+  const toggleBlue = () => {
+    if (mode === "light") {
+      setmode("blue");
+      document.body.style.backgroundColor = "blue";
+      document.body.style.color = "white";
+      showAlert("Blue Mode has been Enabled","success");
+    } 
+    else {
+      setmode("light");
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+      showAlert("Blue Mode has been Disabled","success");
     }
   };
   return (
     <>
-      <Navbar title="TextUtils" mode={mode} toggle={clickToggle} />
+      <Navbar title="TextUtils" mode={mode} toggleBlue = {toggleBlue} toggle={clickToggle} />
       <Alert alert = {alert}/>
       {/* <About /> */}
       <TextForm mode={mode}  showAlert = {showAlert} />
