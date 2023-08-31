@@ -33,12 +33,15 @@ function App() {
       document.body.style.backgroundColor = "grey";
       document.body.style.color = "white";
       showAlert("Light Mode has been Enabled","success");
+      document.title = "TextUtils - Dark Mode";
     } 
     else {
       setmode("light");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
       showAlert("Dark Mode has been Disabled","success");
+      document.title = "TextUtils - Light Mode";
+
     }
   };
   const toggleBlue = () => {
