@@ -1,47 +1,43 @@
 import "./App.css";
-// import About from "./component/About";
+import About from "./component/About";
 import Navbar from "./component/Navbar";
 import TextForm from "./component/TextForm";
 import Alert from "./component/Alert";
 // import Nav from './component/Nav'
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [mode, setmode] = useState("light");
-  const [alert,setAlert] = useState(null);
+  const [alert, setAlert] = useState(null);
 
-  const showAlert = (message,type) =>
-  {
-    setAlert(
-      {
-        msg: message,
-        type: type
-      }
-    );
-   
-      setTimeout(() => {
-        setAlert(null);
-      }, 3000);
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type,
+    });
+
+    setTimeout(() => {
+      setAlert(null);
+    }, 3000);
 
     // setInterval(() => {
     //   setAlert(null);
     // }, 2000);
-  }
+  };
   const clickToggle = () => {
     if (mode === "light") {
       setmode("dark");
       document.body.style.backgroundColor = "grey";
       document.body.style.color = "white";
-      showAlert("Light Mode has been Enabled","success");
+      showAlert("Light Mode has been Enabled", "success");
       document.title = "TextUtils - Dark Mode";
-    } 
-    else {
+    } else {
       setmode("light");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
-      showAlert("Dark Mode has been Disabled","success");
+      showAlert("Dark Mode has been Enabled", "success");
       document.title = "TextUtils - Light Mode";
-
     }
   };
   const toggleBlue = () => {
@@ -49,23 +45,25 @@ function App() {
       setmode("blue");
       document.body.style.backgroundColor = "blue";
       document.body.style.color = "white";
-      showAlert("Blue Mode has been Enabled","success");
-    } 
-    else {
+      showAlert("Blue Mode has been Enabled", "success");
+    } else {
       setmode("light");
       document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
-      showAlert("Blue Mode has been Disabled","success");
+      showAlert("Blue Mode has been Disabled", "success");
     }
   };
   return (
-    <>
-      <Navbar title="TextUtils" mode={mode} toggleBlue = {toggleBlue} toggle={clickToggle} />
-      <Alert alert = {alert}/>
-      {/* <About /> */}
-      <TextForm mode={mode}  showAlert = {showAlert} />
-      
-    </> 
+    <>  
+      <Router>
+      <Navbar title="TextUtils" mode={mode} toggleBlue={toggleBlue} toggle={clickToggle} /> 
+      <Alert alert={alert} />
+      <Routes>
+        <Route exact path="/" element={<TextForm mode={mode} showAlert={showAlert} />} />
+        <Route exact path="/about" element={ <About />} />
+      </Routes>
+    </Router>
+    </>
   );
 }
 
