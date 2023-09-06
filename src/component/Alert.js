@@ -7,11 +7,13 @@ function Alert(props) {
         return l.charAt(0).toUpperCase() + l.slice(1) ;
     }
   return (
-    props.alert && <div>
+    <div className="con1" style={{height: '60px'}}>
+    {props.alert && 
         <div class={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
              <strong>{capitalize(props.alert.type)}</strong> : {props.alert.msg}
-        </div>
-    </div>
+        </div>}
+    
+     </div>
   )
 }
 
