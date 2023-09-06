@@ -28,13 +28,13 @@ export default function TextForm(props) {
        
         <textarea  className="container"  style = {{border: '2px solid black',color: props.mode==='dark'?'white':'black',cursor: 'default' , backgroundColor: props.mode==='dark'?'grey':'white'}}   onChange={handleOnChange}  rows="8"  value={text}>
         </textarea><br/>
-        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1 " onClick={handleUpClicked}>
+        <button disabled={text.length === 0} className="btn bg-primary border border-white mx-1 my-1 " onClick={handleUpClicked}>
           {"Convert into UpperCase"}
         </button>
-        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleLoClicked}>
+        <button disabled={text.length === 0} className="btn bg-primary border border-white mx-1 my-1" onClick={handleLoClicked}>
           {"Convert into LowerCase"}
         </button>
-        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleClearClicked}>
+        <button disabled={text.length === 0} className="btn bg-primary border border-white mx-1 my-1" onClick={handleClearClicked}>
           Clear
         </button>
       

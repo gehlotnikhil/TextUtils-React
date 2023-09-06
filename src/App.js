@@ -25,22 +25,34 @@ function App() {
     //   setAlert(null);
     // }, 2000);
   };
-  const clickToggle = () => {
-    if (mode === "light") {
+  const removeBackground = ()=>
+  {
+    console.log("Yes");
+    document.body.classList.remove("bg-danger");
+    document.body.classList.remove("bg-secondary");
+    document.body.classList.remove("bg-warning");
+    document.body.classList.remove("bg-dark");
+    document.body.classList.remove("bg-white");
+    document.body.classList.remove("bg-primary");
+  }
+  const clickToggle = (cls) => {
+    removeBackground();
+    document.body.classList.add('bg-'+cls);
+    if (cls === "dark") {
       setmode("dark");
       document.body.style.backgroundColor = "grey";
       document.body.style.color = "white";
-      showAlert("Dark Mode has been Enabled", "success");
-      document.title = "TextUtils - Dark Mode";
-    } else {
+      showAlert(" Toggle Mode has been Enabled", "success");
+    }
+    else {
       setmode("light");
-      document.body.style.backgroundColor = "white";
+      // document.body.style.backgroundColor = "white";
       document.body.style.color = "black";
-      showAlert("Light Mode has been Enabled", "success");
-      document.title = "TextUtils - Light Mode";
+      showAlert(" Toggle Mode has been Enabled", "success");
     }
   };
-  const toggleBlue = () => {
+  const toggleBlue = (cls) => {
+
     if (mode === "light") {
       setmode("blue");
       document.body.style.backgroundColor = "blue";
